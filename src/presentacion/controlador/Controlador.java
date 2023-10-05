@@ -58,6 +58,7 @@ public class Controlador implements ActionListener{
 	public void EventoClickMenu_AbrirPanel_Listar(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(pnlListar);
+		pnlListar.actualizarTabla(pNeg.readAll());
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 		
