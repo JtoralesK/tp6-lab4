@@ -33,6 +33,7 @@ public class Controlador implements ActionListener{
 		this.pnlModificar = new ModificarPersonasVistas();
 		
 		this.ventanaPrincipal.getMenuAgregar().addActionListener(a->EventoClickMenu_AbrirPanel_AgregarPersona(a));
+		this.pnlIngresar.getBtnNewButton().addActionListener(a -> EventoClickBtnAceptar(a));
 		this.ventanaPrincipal.getMenuEliminar().addActionListener(a->EventoClickMenu_AbrirPanel_EliminarPersona(a));
 		this.ventanaPrincipal.getMenuModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersona(a));
 		this.ventanaPrincipal.getMenuListar().addActionListener(a->EventoClickMenu_AbrirPanel_Listar(a));
@@ -69,6 +70,11 @@ public class Controlador implements ActionListener{
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 	}
+	
+	public void EventoClickBtnAceptar(ActionEvent a) {
+		
+	}
+	
 	public void inicializar() {
 		this.ventanaPrincipal.setVisible(true);
 	}

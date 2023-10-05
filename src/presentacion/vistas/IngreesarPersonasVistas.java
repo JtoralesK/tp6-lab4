@@ -18,7 +18,7 @@ public class IngreesarPersonasVistas extends JPanel{
 	private JTextField JTNombre;
 	private JTextField JTApellido;
 	private JTextField JTdni;
-	
+	private JButton btnNewButton;
 	public IngreesarPersonasVistas() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 85, 0, 0, 0};
@@ -78,7 +78,7 @@ public class IngreesarPersonasVistas extends JPanel{
 		add(JTdni, gbc_JTdni);
 		JTdni.setColumns(10);
 		
-		JButton btnNewButton = new JButton("Aceptar");
+		btnNewButton = new JButton("Aceptar");
 		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
 		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
 		gbc_btnNewButton.gridx = 4;
@@ -87,8 +87,31 @@ public class IngreesarPersonasVistas extends JPanel{
 		
 		
 	}
-
 	
+	public JTextField getJTNombre() {
+		return JTNombre;
+	}
+	public void setJTNombre(JTextField jTNombre) {
+		JTNombre = jTNombre;
+	}
+	public JTextField getJTApellido() {
+		return JTApellido;
+	}
+	public void setJTApellido(JTextField jTApellido) {
+		JTApellido = jTApellido;
+	}
+	public JTextField getJTdni() {
+		return JTdni;
+	}
+	public void setJTdni(JTextField jTdni) {
+		JTdni = jTdni;
+	}
+	public JButton getBtnNewButton() {
+		return btnNewButton;
+	}
+	public void setBtnNewButton(JButton btnNewButton) {
+		this.btnNewButton = btnNewButton;
+	}
 
 }
 
