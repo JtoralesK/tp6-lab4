@@ -22,7 +22,6 @@ public class ListarPersonasVista extends JPanel {
 	public ListarPersonasVista() {
         setLayout(null);
 
-        // Definir las columnas de la tabla
         String[] columnas = {"Nombre", "Apellido", "DNI"};
         dtmPersonas = new DefaultTableModel(columnas, 0);
         
@@ -34,7 +33,7 @@ public class ListarPersonasVista extends JPanel {
     }
 
     public void actualizarTabla(List<Persona> personas) {
-    	dtmPersonas.setRowCount(1); // Limpiar la tabla
+    	dtmPersonas.setRowCount(1); 
         for (Persona persona : personas) {
         	dtmPersonas.addRow(new Object[]{persona.getNombre(), persona.getApellido(),persona.getDni()});
         }
