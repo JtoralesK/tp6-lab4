@@ -12,25 +12,35 @@ import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
+import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
+import presentacion.controlador.Controlador;
 import presentacion.vistas.EliminarPersonasVistas;
 import presentacion.vistas.IngreesarPersonasVistas;
 import presentacion.vistas.ListarPersonasVista;
 import presentacion.vistas.ModificarPersonasVistas;
+import presentacion.vistas.VentanaPrincipal;
 
 
 
-public class Principal extends JFrame {
+public class Principal {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private JPanel contentPane;
+	//private static final long serialVersionUID = 1L;
+	//private JPanel contentPane;
 
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		VentanaPrincipal vista = new VentanaPrincipal();
+		PersonaNegocio negocio = new PersonaNegocioImpl();
+		Controlador controlador = new Controlador(vista, negocio);
+		controlador.inicializar();
+	}
+		/*
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -46,6 +56,7 @@ public class Principal extends JFrame {
 	/**
 	 * Create the frame.
 	 */
+		/*
 	public Principal() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
@@ -115,5 +126,5 @@ public class Principal extends JFrame {
 		gbl_contentPane.rowWeights = new double[]{Double.MIN_VALUE};
 		contentPane.setLayout(gbl_contentPane);
 	}
-
+	*/
 }
