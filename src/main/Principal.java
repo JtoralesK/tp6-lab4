@@ -53,7 +53,7 @@ public class Principal extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu mnNewMenu = new JMenu("New menu");
+		JMenu mnNewMenu = new JMenu("Persona");
 		menuBar.add(mnNewMenu);
 		
 		JMenuItem Agregar = new JMenuItem("Agregar");
