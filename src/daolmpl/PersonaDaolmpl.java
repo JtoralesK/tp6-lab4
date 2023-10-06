@@ -10,7 +10,7 @@ import dao.PersonaDao;
 import entidad.Persona;
 
 public class PersonaDaolmpl implements PersonaDao{
-	private static final String insert = "INSERT INTO personas(Dni, Nombre, appelido) VALUES(?, ?, ?)";
+	private static final String insert = "INSERT INTO personas(Dni, Nombre, Apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE Dni = ?";
 	private static final String readall = "SELECT * FROM personas";
 		

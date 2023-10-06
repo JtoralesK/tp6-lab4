@@ -73,6 +73,16 @@ public class Controlador implements ActionListener{
 	}
 	
 	public void EventoClickBtnAceptar(ActionEvent a) {
+		boolean res = pNeg.insert(new Persona(pnlIngresar.getJTdni().getText(),pnlIngresar.getJTNombre().getText(),pnlIngresar.getJTApellido().getText()));
+		
+		if (res)
+		{
+			pnlIngresar.getjOptionPane().showMessageDialog(null, pnlIngresar.getJTNombre().getText() + " fue agregado/a con exito");
+		}
+		else
+		{
+			pnlIngresar.getjOptionPane().showMessageDialog(null, "No se pudo agregar a la persona");
+		}
 		
 	}
 	

@@ -6,6 +6,7 @@ import java.awt.Insets;
 
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
@@ -19,6 +20,8 @@ public class IngreesarPersonasVistas extends JPanel{
 	private JTextField JTApellido;
 	private JTextField JTdni;
 	private JButton btnNewButton;
+	private JOptionPane jOptionPane;
+	
 	public IngreesarPersonasVistas() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 85, 0, 0, 0};
@@ -111,6 +114,14 @@ public class IngreesarPersonasVistas extends JPanel{
 	}
 	public void setBtnNewButton(JButton btnNewButton) {
 		this.btnNewButton = btnNewButton;
+	}
+
+	public JOptionPane getjOptionPane() {
+		return jOptionPane;
+	}
+
+	public void setjOptionPane(JOptionPane jOptionPane) {
+		this.jOptionPane = jOptionPane;
 	}
 
 }
