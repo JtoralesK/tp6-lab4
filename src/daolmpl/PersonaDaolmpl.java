@@ -52,11 +52,15 @@ public class PersonaDaolmpl implements PersonaDao{
 		try 
 		{
 			statement = conexion.prepareStatement(delete);
+			
 			statement.setString(1, persona_a_eliminar.getDni());
 			if(statement.executeUpdate() > 0)
 			{
 				conexion.commit();
 				isdeleteExitoso = true;
+			}else{
+				System.out.println(persona_a_eliminar.getDni()+"as");
+
 			}
 		} 
 		catch (SQLException e) 

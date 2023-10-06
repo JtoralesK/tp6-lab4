@@ -3,13 +3,28 @@ package presentacion.vistas;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+
+import entidad.Persona;
+import negocio.PersonaNegocio;
+import negocioImpl.PersonaNegocioImpl;
 
 public class EliminarPersonasVistas extends JPanel{
+
+	JList<?> list = new JList();
+    PersonaNegocioImpl pesonaNeg = new PersonaNegocioImpl();
+
 	public EliminarPersonasVistas() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 0, 0, 0, 0};
@@ -26,22 +41,55 @@ public class EliminarPersonasVistas extends JPanel{
 		gbc_lblNewLabel.gridy = 1;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		JList<?> list = new JList();
-		GridBagConstraints gbc_list = new GridBagConstraints();
-		gbc_list.insets = new Insets(0, 0, 5, 5);
-		gbc_list.fill = GridBagConstraints.BOTH;
-		gbc_list.gridx = 3;
-		gbc_list.gridy = 2;
-		add(list, gbc_list);
+
+        DefaultListModel<String> listModel = new DefaultListModel<>();
+		List<Persona> personas = pesonaNeg.readAll(); 
 		
-		JButton BTNEliminar = new JButton("Eliminar");
+		for (Persona persona : personas) {
+		    String datosPersona = persona.getNombre() + ", " + persona.getApellido() + ", " + persona.getDni();
+		    listModel.addElement(datosPersona);
+		}
+        list = new JList<>(listModel);
+        GridBagConstraints gbc_list1 = new GridBagConstraints();
+        gbc_list1.insets = new Insets(0, 0, 5, 5);
+        gbc_list1.fill = GridBagConstraints.BOTH;
+        gbc_list1.gridx = 3;
+        gbc_list1.gridy = 2;
+
+        // Agrega el JList al panel usando el GridBagConstraints
+        add(list, gbc_list1);
+		
+        
+        JButton BTNEliminar = new JButton("Eliminar");
+        BTNEliminar.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+            	String itemSeleccionado = (String) list.getSelectedValue();
+        		String[] partes = itemSeleccionado.split(",");
+
+            	if (partes.length >= 3) {
+				    try {
+				        Persona p = new Persona(partes[2].trim(),partes[0].trim(),partes[1].trim());
+				        if (pesonaNeg.delete(p)) {
+				            JOptionPane.showMessageDialog(null, "La persona ha sido eliminada correctamente.");
+				            int selectedIndex = list.getSelectedIndex();
+			                    listModel.remove(selectedIndex); 
+				        } else {
+				            JOptionPane.showMessageDialog(null, "Error al eliminar la persona.", "Error", JOptionPane.ERROR_MESSAGE);
+				        }
+				    } catch (Exception e1) {
+				        System.out.println("No se pudo convertir la cadena en un número.");
+				    }
+				}
+            	
+            }
+        });
 		GridBagConstraints gbc_BTNEliminar = new GridBagConstraints();
 		gbc_BTNEliminar.insets = new Insets(0, 0, 5, 5);
 		gbc_BTNEliminar.gridx = 3;
 		gbc_BTNEliminar.gridy = 3;
 		add(BTNEliminar, gbc_BTNEliminar);
 	}
-
+	
 	/**
 	 * 
 	 */

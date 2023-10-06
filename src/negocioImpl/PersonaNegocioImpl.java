@@ -31,7 +31,6 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 		return estado;
 	}
 
-	@Override
 	public List<Persona> readAll() {
 		return pdao.readAll();
 	}

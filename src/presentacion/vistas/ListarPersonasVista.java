@@ -23,6 +23,7 @@ public class ListarPersonasVista extends JPanel {
         setLayout(null);
 
         String[] columnas = {"Nombre", "Apellido", "DNI"};
+       
         dtmPersonas = new DefaultTableModel(columnas, 0);
         
         dtmPersonas.addRow(new Object[]{"Nombre", "Apellido","DNI"});

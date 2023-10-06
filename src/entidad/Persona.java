@@ -13,7 +13,7 @@ public class Persona {
 	}
 
 	public String getDni() {
-		return dni;
+		return this.dni;
 	}
 
 	public void setDni(String dni) {
