@@ -12,6 +12,7 @@ import entidad.Persona;
 public class PersonaDaolmpl implements PersonaDao{
 	private static final String insert = "INSERT INTO personas(Dni, Nombre, Apellido) VALUES(?, ?, ?)";
 	private static final String delete = "DELETE FROM personas WHERE Dni = ?";
+	private static final String update = "UPDATE personas SET Nombre = ?, Apellido = ? WHERE Dni = ?";
 	private static final String readall = "SELECT * FROM personas";
 		
 	public boolean insert(Persona persona)
@@ -65,7 +66,29 @@ public class PersonaDaolmpl implements PersonaDao{
 		}
 		return isdeleteExitoso;
 	}
-	
+	public boolean update(Persona persona_a_modificar)
+	{
+		PreparedStatement statement;
+		Connection conexion = Conexion.getConexion().getSQLConexion();
+		boolean isUpdateExitoso = false;
+		try 
+		{
+			statement = conexion.prepareStatement(update);
+			statement.setString(1, persona_a_modificar.getNombre());
+			statement.setString(2, persona_a_modificar.getApellido());
+			statement.setString(3, persona_a_modificar.getDni());
+			if(statement.executeUpdate() > 0)
+			{
+				conexion.commit();
+				isUpdateExitoso = true;
+			}
+		} 
+		catch (SQLException e) 
+		{
+			e.printStackTrace();
+		}
+		return isUpdateExitoso;
+	}
 	public List<Persona> readAll()
 	{
 		PreparedStatement statement;

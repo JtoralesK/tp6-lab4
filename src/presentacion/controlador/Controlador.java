@@ -2,8 +2,12 @@ package presentacion.controlador;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.util.ArrayList;
 import java.util.ResourceBundle.Control;
+
+import javax.swing.JOptionPane;
 
 import entidad.Persona;
 import negocio.PersonaNegocio;
@@ -51,6 +55,21 @@ public class Controlador implements ActionListener{
 	public void EventoClickMenu_AbrirPanel_ModificarPersona(ActionEvent a) {
 		ventanaPrincipal.getContentPane().removeAll();
 		ventanaPrincipal.getContentPane().add(pnlModificar);
+		pnlModificar.actualizarLista(pNeg.readAll());
+		pnlModificar.getList().addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                if (e.getClickCount() == 1) {
+                    int selectedIndex = pnlModificar.getList().getSelectedIndex();
+                    if (selectedIndex != -1) {
+                    	Persona persona = pnlModificar.getListModel().elementAt(selectedIndex);
+                    	pnlModificar.getTFNombre().setText(persona.getNombre());
+                    	pnlModificar.getTFApellido().setText(persona.getApellido());
+                    	pnlModificar.getTFDni().setText(persona.getDni());
+                    }
+                }
+            }
+        });
+		pnlModificar.getBtnModificar().addActionListener(b -> EventoModificarPersona(b));
 		ventanaPrincipal.getContentPane().repaint();
 		ventanaPrincipal.getContentPane().revalidate();
 		
@@ -81,9 +100,27 @@ public class Controlador implements ActionListener{
 		}
 		else
 		{
-			pnlIngresar.getjOptionPane().showMessageDialog(null, "No se pudo agregar a la persona");
+			pnlIngresar.getjOptionPane().showMessageDialog(null, "Es necesario completar todos los campos");
 		}
 		
+	}
+	
+	public void EventoModificarPersona(ActionEvent a) {
+        int selectedIndex = pnlModificar.getList().getSelectedIndex();
+        if (selectedIndex != -1) {
+        	Persona personaOld = pnlModificar.getListModel().elementAt(selectedIndex);
+        	Persona personaNew = new Persona(pnlModificar.getTFDni().getText(), pnlModificar.getTFNombre().getText(),pnlModificar.getTFApellido().getText());
+        	boolean res = pNeg.update(personaNew, personaOld.getDni());
+        	if (res)
+        	{
+        		pnlModificar.getjOptionPane().showMessageDialog(null, personaNew.getNombre() + " fue modificado/a con exito");
+        		pnlModificar.getListModel().setElementAt(personaNew, selectedIndex);
+        	}
+        	else
+        	{
+        		pnlModificar.getjOptionPane().showMessageDialog(null, "Todos los campos deben estar completos y no se puede alterar el Dni");
+        	}
+        }
 	}
 	
 	public void inicializar() {

@@ -36,4 +36,15 @@ public class PersonaNegocioImpl implements PersonaNegocio{
 		return pdao.readAll();
 	}
 	
+	@Override
+	public boolean update(Persona persona, String dniOld)
+	{
+		boolean estado = false;
+		if(persona.getNombre().trim().length()>0 &&
+				persona.getApellido().trim().length()>0 &&
+				persona.getDni().compareTo(dniOld) == 0) {
+			estado=pdao.update(persona);
+		}
+		return estado;
+	}
 }

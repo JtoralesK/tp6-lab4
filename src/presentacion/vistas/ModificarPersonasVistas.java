@@ -3,15 +3,59 @@ package presentacion.vistas;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
+import java.util.List;
 
+import javax.swing.DefaultListModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
+import entidad.Persona;
+
 public class ModificarPersonasVistas extends JPanel{
+	private static final long serialVersionUID = 2330170408085485131L;
+	private JTextField TFNombre;
+	private JTextField TFApellido;
+	private JTextField TFDni;
+	private JList list;
+	private JButton btnModificar;
+	private JOptionPane jOptionPane;
+	
+    public JOptionPane getjOptionPane() {
+		return jOptionPane;
+	}
+
+	public JButton getBtnModificar() {
+		return btnModificar;
+	}
+
+	public JTextField getTFNombre() {
+		return TFNombre;
+	}
+
+	public JTextField getTFApellido() {
+		return TFApellido;
+	}
+
+	public JTextField getTFDni() {
+		return TFDni;
+	}
+
+	public JList getList() {
+		return list;
+	}
+
+	public DefaultListModel<Persona> getListModel() {
+		return listModel;
+	}
+
+	private DefaultListModel<Persona> listModel;
+
 	public ModificarPersonasVistas() {
+		jOptionPane = new JOptionPane();
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 281, 0, 23, 0};
 		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 107, 32, 0, 0};
@@ -27,7 +71,8 @@ public class ModificarPersonasVistas extends JPanel{
 		gbc_lblNewLabel.gridy = 2;
 		add(lblNewLabel, gbc_lblNewLabel);
 		
-		JList list = new JList();
+		listModel = new DefaultListModel<Persona>();
+		list = new JList(listModel);
 		GridBagConstraints gbc_list = new GridBagConstraints();
 		gbc_list.insets = new Insets(0, 0, 5, 5);
 		gbc_list.fill = GridBagConstraints.BOTH;
@@ -79,7 +124,7 @@ public class ModificarPersonasVistas extends JPanel{
 		panel.add(TFDni, gbc_TFDni);
 		TFDni.setColumns(10);
 		
-		JButton btnModificar = new JButton("Modificar");
+		btnModificar = new JButton("Modificar");
 		GridBagConstraints gbc_btnModificar = new GridBagConstraints();
 		gbc_btnModificar.gridx = 6;
 		gbc_btnModificar.gridy = 0;
@@ -88,12 +133,9 @@ public class ModificarPersonasVistas extends JPanel{
 		
 	}
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 2330170408085485131L;
-	private JTextField TFNombre;
-	private JTextField TFApellido;
-	private JTextField TFDni;
-
+    public void actualizarLista(List<Persona> personas) {
+        for (Persona persona : personas) {
+        	listModel.addElement(persona);
+        }
+    }
 }
