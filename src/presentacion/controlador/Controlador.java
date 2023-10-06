@@ -9,13 +9,13 @@ import entidad.Persona;
 import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 import presentacion.vistas.EliminarPersonasVistas;
-import presentacion.vistas.IngreesarPersonasVistas;
+import presentacion.vistas.IngresarPersonasVistas;
 import presentacion.vistas.ListarPersonasVista;
 import presentacion.vistas.ModificarPersonasVistas;
 import presentacion.vistas.VentanaPrincipal;
 
 public class Controlador implements ActionListener{
-	private IngreesarPersonasVistas pnlIngresar;
+	private IngresarPersonasVistas pnlIngresar;
 	private EliminarPersonasVistas pnlEliminar;
 	private ListarPersonasVista pnlListar;
 	private ModificarPersonasVistas pnlModificar;
@@ -27,13 +27,13 @@ public class Controlador implements ActionListener{
 		this.ventanaPrincipal = vista;
 		this.pNeg = pNeg;
 		
-		this.pnlIngresar = new IngreesarPersonasVistas();
+		this.pnlIngresar = new IngresarPersonasVistas();
 		this.pnlEliminar = new EliminarPersonasVistas();
 		this.pnlListar = new ListarPersonasVista();
 		this.pnlModificar = new ModificarPersonasVistas();
 		
 		this.ventanaPrincipal.getMenuAgregar().addActionListener(a->EventoClickMenu_AbrirPanel_AgregarPersona(a));
-		this.pnlIngresar.getBtnNewButton().addActionListener(a -> EventoClickBtnAceptar(a));
+		this.pnlIngresar.getBtnAceptar().addActionListener(a -> EventoClickBtnAceptar(a));
 		this.ventanaPrincipal.getMenuEliminar().addActionListener(a->EventoClickMenu_AbrirPanel_EliminarPersona(a));
 		this.ventanaPrincipal.getMenuModificar().addActionListener(a->EventoClickMenu_AbrirPanel_ModificarPersona(a));
 		this.ventanaPrincipal.getMenuListar().addActionListener(a->EventoClickMenu_AbrirPanel_Listar(a));

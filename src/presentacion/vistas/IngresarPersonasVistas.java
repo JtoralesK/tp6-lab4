@@ -10,24 +10,21 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
 
-public class IngreesarPersonasVistas extends JPanel{
+public class IngresarPersonasVistas extends JPanel{
 	
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -195983497551792198L;
 	private JTextField JTNombre;
 	private JTextField JTApellido;
 	private JTextField JTdni;
-	private JButton btnNewButton;
+	private JButton btnAcepter;
 	private JOptionPane jOptionPane;
 	
-	public IngreesarPersonasVistas() {
+	public IngresarPersonasVistas() {
 		GridBagLayout gridBagLayout = new GridBagLayout();
 		gridBagLayout.columnWidths = new int[]{0, 0, 0, 0, 85, 0, 0, 0};
-		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0};
+		gridBagLayout.rowHeights = new int[]{0, 0, 0, 0, 0, 0, 0, 0, 0, 0};
 		gridBagLayout.columnWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 1.0, 1.0, Double.MIN_VALUE};
-		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
+		gridBagLayout.rowWeights = new double[]{0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, Double.MIN_VALUE};
 		setLayout(gridBagLayout);
 		
 		JLabel lblNombre = new JLabel("Nombre");
@@ -81,13 +78,12 @@ public class IngreesarPersonasVistas extends JPanel{
 		add(JTdni, gbc_JTdni);
 		JTdni.setColumns(10);
 		
-		btnNewButton = new JButton("Aceptar");
-		GridBagConstraints gbc_btnNewButton = new GridBagConstraints();
-		gbc_btnNewButton.insets = new Insets(0, 0, 0, 5);
-		gbc_btnNewButton.gridx = 4;
-		gbc_btnNewButton.gridy = 7;
-		add(btnNewButton, gbc_btnNewButton);
-		
+		btnAcepter = new JButton("Aceptar");
+		GridBagConstraints gbc_btnAcepter = new GridBagConstraints();
+		gbc_btnAcepter.insets = new Insets(0, 0, 0, 5);
+		gbc_btnAcepter.gridx = 5;
+		gbc_btnAcepter.gridy = 8;
+		add(btnAcepter, gbc_btnAcepter);
 		
 	}
 	
@@ -109,11 +105,11 @@ public class IngreesarPersonasVistas extends JPanel{
 	public void setJTdni(JTextField jTdni) {
 		JTdni = jTdni;
 	}
-	public JButton getBtnNewButton() {
-		return btnNewButton;
+	public JButton getBtnAceptar() {
+		return btnAcepter;
 	}
 	public void setBtnNewButton(JButton btnNewButton) {
-		this.btnNewButton = btnNewButton;
+		this.btnAcepter = btnNewButton;
 	}
 
 	public JOptionPane getjOptionPane() {

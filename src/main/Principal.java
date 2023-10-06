@@ -16,7 +16,7 @@ import negocio.PersonaNegocio;
 import negocioImpl.PersonaNegocioImpl;
 import presentacion.controlador.Controlador;
 import presentacion.vistas.EliminarPersonasVistas;
-import presentacion.vistas.IngreesarPersonasVistas;
+import presentacion.vistas.IngresarPersonasVistas;
 import presentacion.vistas.ListarPersonasVista;
 import presentacion.vistas.ModificarPersonasVistas;
 import presentacion.vistas.VentanaPrincipal;

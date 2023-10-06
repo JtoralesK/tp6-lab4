@@ -16,8 +16,10 @@ public class VentanaPrincipal extends JFrame {
 
 	
 	public VentanaPrincipal() {
+		setTitle("TP6");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 500, 400);
+		setSize(550, 400);
+		setLocationRelativeTo(null);
 		
 		menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
